@@ -3,18 +3,12 @@ class Article:
     all = []
 
     def __init__(self, author, magazine, title):
-        # if isinstance(title, str) and 5 <= len(title) <= 50:
-        #     self._title = title
-        # else:
-        #     raise ValueError('Title must be a string between 5 and 50 characters.')
-        if isinstance(title, str) and 5 <= len(title) <= 50:
-            self._title = title  # Directly assign to _title to bypass the setter
-        else:
-            raise ValueError('Title must be a string between 5 and 50 characters.')
+        if not (5 <= len(title) <= 50):
+            raise ValueError("Title must be between 5 and 50 characters.")
 
         self.author = author
         self.magazine = magazine
-        # self._title = title
+        self._title = title
         Article.all.append(self)
 
 
@@ -25,10 +19,10 @@ class Article:
     @title.setter
     def title(self, title):
         if not hasattr(self, '_title'):
-            if isinstance(title, str) and 5 <= len(title) <= 50:
+            if isinstance(title, str) and  5 <= len(title) <= 50:
                 self._title = title
             else:
-                raise ValueError('Title must be a string between 5 and 50 characters.')
+                raise ValueError('Title must be between 5 and 50 characters.')
         else:
             raise AttributeError('Title cannot be changed after instantiation.')
 
@@ -176,7 +170,9 @@ class Magazine:
                  contributing_authors.append(author)
 
         return contributing_authors if contributing_authors else None
+       
     
+
     def counting(self):
         counting_authors = {}
         author_list = []
