@@ -189,11 +189,7 @@ class Magazine:
         return author_list if author_list else None
     
 
-    # python --version
-    # deactivate  # to deactivate
-# pipenv shell  # to reactivate
-    # pipenv --rm
-# pipenv install
+    
 
 
 
